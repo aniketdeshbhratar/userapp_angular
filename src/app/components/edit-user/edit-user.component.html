@@ -1,0 +1,93 @@
+<div class="card">
+  <div class="card-header d-flex justify-content-between">
+    <h5>Edit User Details</h5>
+    <a class="" routerLink="/userlist">Back to User list </a>
+  </div>
+
+  <div class="card-body">
+    <form [formGroup]="updateUserForm" (ngSubmit)="onUpdate()">
+      <div class="mb-1">
+        <label class="form-label">Full Name</label>
+        <input
+          type="text"
+          formControlName="fullName"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && controls['fullName'].errors }"
+        />
+        <div *ngIf="controls['fullName'].errors" class="invalid-feedback mt-1">
+          <div *ngIf="controls['fullName'].errors?.['required']">
+            Full Name is Mandatory
+          </div>
+        </div>
+      </div>
+      <div class="mb-1">
+        <label class="form-label">Display Name</label>
+        <input
+          type="text"
+          formControlName="displayName"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && controls['displayName'].errors
+          }"
+        />
+        <div
+          *ngIf="submitted && controls['displayName'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="controls['displayName'].errors?.['required']">
+            Display Name is Mandatory
+          </div>
+        </div>
+      </div>
+      <div class="mb-1">
+        <label class="form-label">Email</label>
+        <input
+          type="text"
+          formControlName="email"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && controls['email'].errors }"
+        />
+        <div
+          *ngIf="submitted && controls['email'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="controls['email'].errors?.['required']">
+            Email is Mandatory
+          </div>
+          <div *ngIf="controls['email'].errors?.['email']">
+            Email must be a valid email address
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Details</label>
+        <textarea
+          type="text"
+          formControlName="details"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && controls['details'].errors }"
+        ></textarea>
+        <div
+          *ngIf="submitted && controls['details'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="controls['details'].errors?.['required']">
+            Details is Mandatory
+          </div>
+          <div *ngIf="controls['details'].errors?.['minlength']">
+            Details must be at least 8 characters in Length
+          </div>
+        </div>
+      </div>
+      <div class="mb-1">
+        <button
+          class="btn btn-success"
+          notificationOnSave
+          [disabled]="updateUserForm.pristine || !updateUserForm.valid"
+        >
+          Update User
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

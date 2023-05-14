@@ -1,0 +1,19 @@
+<div class="col-6">
+    <div class="card" *ngIf="!isEditUserVisible; else editUserDetails">
+        <div class="card-header  d-flex justify-content-between">
+          <h5>User Details </h5>
+          <a routerLink="/" >Back</a>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{currentUser.fullName}}</h5>
+          <p>Display Name: {{currentUser.displayName}}</p>
+          <p>Email Id: {{currentUser.email}}</p>
+          <p class="card-text">Details: {{currentUser.details}}</p>
+          <a class="btn btn-primary btn-sm" (click)="onEdit()">Edit</a>
+        </div>
+    </div>
+    
+    <ng-template #editUserDetails>
+        <app-edit-user [userDetails]="currentUser" ></app-edit-user>
+    </ng-template>
+</div>
