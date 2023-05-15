@@ -7,11 +7,12 @@
   <div class="card-body">
     <form [formGroup]="updateUserForm" (ngSubmit)="onUpdate()">
       <div class="mb-1">
-        <label class="form-label">Full Name</label>
+        <label class="form-label" for="fullname">Full Name</label>
         <input
           type="text"
           formControlName="fullName"
           class="form-control"
+          id="fullname"
           [ngClass]="{ 'is-invalid': submitted && controls['fullName'].errors }"
         />
         <div *ngIf="controls['fullName'].errors" class="invalid-feedback mt-1">
@@ -21,11 +22,12 @@
         </div>
       </div>
       <div class="mb-1">
-        <label class="form-label">Display Name</label>
+        <label class="form-label" for="displayName">Display Name</label>
         <input
           type="text"
           formControlName="displayName"
           class="form-control"
+          id="displayName"
           [ngClass]="{
             'is-invalid': submitted && controls['displayName'].errors
           }"
@@ -40,11 +42,12 @@
         </div>
       </div>
       <div class="mb-1">
-        <label class="form-label">Email</label>
+        <label class="form-label" for="email">Email</label>
         <input
           type="text"
           formControlName="email"
           class="form-control"
+          id="email"
           [ngClass]="{ 'is-invalid': submitted && controls['email'].errors }"
         />
         <div
@@ -60,11 +63,12 @@
         </div>
       </div>
       <div class="mb-3">
-        <label class="form-label">Details</label>
+        <label class="form-label" for="details">Details</label>
         <textarea
           type="text"
           formControlName="details"
           class="form-control"
+          id="details"
           [ngClass]="{ 'is-invalid': submitted && controls['details'].errors }"
         ></textarea>
         <div
